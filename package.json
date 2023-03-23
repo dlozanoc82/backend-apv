@@ -1,0 +1,16 @@
+{
+  "name": "apv-backend",
+  "version": "1.0.0",
+  "description": "Backend-app Administrador de pacientes de veterinaria",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "JavaScript",
+    "NodeJS",
+    "Express"
+  ],
+  "author": "Daniel Lozano",
+  "license": "MIT"
+}
