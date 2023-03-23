@@ -1,10 +1,23 @@
+import Veterinario from "../models/Veterinario.js";
 
-const registrar = ( req, res )=>{
-    res.send('Desde API/VETERINARIOS');
+const registrar = async ( req, res )=>{
+    //const {nombre, email, password} = req.body;
+
+    try {
+        //Guardar nuevo usuario
+        const veterinario = new Veterinario(req.body);
+        const veterinarioSave = await veterinario.save();
+
+        res.json(veterinarioSave);
+    } catch (error) {
+        console.log(error);
+    }
+
+
 };
 
 const perfil =( req, res )=>{
-    res.send('Desde API/VETERINARIOS/perfil');
+    res.json({msg: 'Mostrando Perfil'});
 }
 
 export {
