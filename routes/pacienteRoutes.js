@@ -1,10 +1,17 @@
 import express from "express";
-import { agregarPaciente, obtenerPaciente } from "../controllers/pacienteController.js";
+import { agregarPaciente, obtenerPacientes, obtenerPaciente, actualizarPaciente,
+    eliminarPaciente } from "../controllers/pacienteController.js";
 const router = express.Router();
 import checkAuth from "../middleware/authMiddleware.js";
 
 router.route('/')
     .post(checkAuth, agregarPaciente)
-    .get(checkAuth, obtenerPaciente)
+    .get(checkAuth, obtenerPacientes);
+
+router
+    .route('/:id')
+    .get(checkAuth, obtenerPaciente) 
+    .put(actualizarPaciente)
+    .delete(eliminarPaciente);
 
 export default router;
