@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 
-const emailRegistro = () => {
+const emailRegistro = async(datos) => {
     const transporte = nodemailer.createTransport({
         host: process.env.EMAIL_HOST,
         port: process.env.EMAIL_PORT,
@@ -9,6 +9,25 @@ const emailRegistro = () => {
             pass: process.env.EMAIL_PASS
         }
     });
+
+    //Enviar el email
+    const { email, nombre, token} = datos;
+
+    const info = await transporte.sendMail({
+        from: "APV - Administrador de pacientes de veterinaria",
+        to: email,
+        subject: 'Comprueba tu cuenta en APV',
+        text: 'Comprueba tu cuenta en APV',
+        html: `<p>Hola: ${nombre} comprueba tu cuenta en APV</p>
+            <p>Tu cuenta ya esta lista, solo debes comprobarla en el sieguirnte enlace: 
+            <a href="${process.env.FRONTEND_URL}/confirmar/${token}">Comprobar Cuenta</a></p>
+            
+            <p>Si tu no creaste la cuenta, puedes ignorar este mensaje</p>
+        `
+    });
+
+    console.log("Mensaje enviado: %s", info.messageId)
+
 }
 
 export default emailRegistro;
