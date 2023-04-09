@@ -39,7 +39,7 @@ const perfil =( req, res )=>{
     const {veterinario} = req;
     res.json(veterinario);
 
-    res.json({msg: 'Mostrando Perfil'});
+    // res.json({msg: 'Mostrando Perfil'});
 }
 
 const confirmar = async( req, res ) => {
