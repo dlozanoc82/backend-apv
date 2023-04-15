@@ -61,7 +61,7 @@ const confirmar = async( req, res ) => {
         console.log(error);
     }
 
-    console.log(usuarioConfirmar);
+    // console.log(usuarioConfirmar);
     
 }
 

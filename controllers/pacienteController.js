@@ -59,7 +59,7 @@ const actualizarPaciente = async(req, res) => {
         const pacienteActualizado = await paciente.save();
         res.json(pacienteActualizado);
     } catch (error) {
-        console.log(console.error);
+        console.log(error);
     }
 
 }
@@ -78,7 +78,7 @@ const eliminarPaciente = async(req, res) => {
         await paciente.deleteOne();
         res.json({msg: 'Paciente Eliminado'})
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 
 }
